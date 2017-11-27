@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 
-import * as propTypes from './propTypes';
-
-import PureComponent from '../../PureComponent';
+// import * as propTypes from './propTypes';
 
 export default class Item extends PureComponent {
-  static propTypes = propTypes;
+  // static propTypes = propTypes;
 
   render() {
     const {

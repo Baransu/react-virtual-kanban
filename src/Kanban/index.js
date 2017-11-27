@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import HTML5Backend from 'react-dnd-html5-backend';
 import withScrolling, { createHorizontalStrength } from 'react-dnd-scrollzone';
 import { Grid } from 'react-virtualized';
@@ -12,7 +13,7 @@ import {
   findItemListId
 } from './updateLists';
 
-import * as propTypes from './propTypes';
+// import * as propTypes from './propTypes';
 import * as decorators from '../decorators';
 import DragLayer from '../DragLayer';
 import SortableList from '../SortableList';
@@ -20,8 +21,6 @@ import SortableList from '../SortableList';
 const GridWithScrollZone = withScrolling(Grid);
 const horizontalStrength = createHorizontalStrength(200);
 import { DragDropManager } from 'dnd-core';
-
-import PureComponent from '../PureComponent';
 
 /**
  * Grab dragDropManager from context
@@ -33,7 +32,7 @@ const getDndContext = ((
 ) => context => context.dragDropManager || dragDropManager)();
 
 class Kanban extends PureComponent {
-  static propTypes = propTypes;
+  // static propTypes = propTypes;
 
   static defaultProps = {
     lists: [],
@@ -55,11 +54,11 @@ class Kanban extends PureComponent {
   };
 
   static childContextTypes = {
-    dragDropManager: React.PropTypes.object
+    dragDropManager: PropTypes.object
   };
 
   static contextTypes = {
-    dragDropManager: React.PropTypes.object
+    dragDropManager: PropTypes.object
   };
 
   constructor(props) {
@@ -249,7 +248,7 @@ class Kanban extends PureComponent {
       scrollToList,
       scrollToAlignment
     } = this.props;
-
+    // console.warn(height - scrollbarSize());
     return (
       <div>
         <GridWithScrollZone
@@ -261,7 +260,7 @@ class Kanban extends PureComponent {
           width={width}
           height={height}
           columnWidth={listWidth}
-          rowHeight={height - scrollbarSize()}
+          rowHeight={height}
           columnCount={lists.length}
           rowCount={1}
           cellRenderer={this.renderList}

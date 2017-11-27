@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { DragLayer } from 'react-dnd';
 
 import * as ItemTypes from '../types';
-import * as propTypes from './propTypes';
+// import * as propTypes from './propTypes';
 
 // TODO: Extract to utils dir
 import { findItemIndex, findListIndex } from '../Kanban/updateLists';
-
-import PureComponent from '../PureComponent';
 
 function getStyles({ currentOffset }) {
   if (!currentOffset) {
@@ -25,7 +23,7 @@ function getStyles({ currentOffset }) {
 }
 
 class KanbanDragLayer extends PureComponent {
-  static propTypes = propTypes;
+  // static propTypes = propTypes;
 
   constructor(props) {
     super(props);

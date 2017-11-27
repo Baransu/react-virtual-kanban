@@ -13,14 +13,12 @@ import SortableItem from '../SortableItem';
 import { LIST_TYPE, ROW_TYPE } from '../types';
 import * as dragSpec from './dragSpec';
 import * as dropSpec from './dropSpec';
-import * as propTypes from './propTypes';
-
-import PureComponent from '../PureComponent';
+// import * as propTypes from './propTypes';
 
 const identity = c => c;
 
 class SortableList extends PureComponent {
-  static propTypes = propTypes;
+  // static propTypes = propTypes;
 
   constructor(props) {
     super(props);

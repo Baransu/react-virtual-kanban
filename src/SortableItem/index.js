@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { DragSource, DropTarget } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 
 import { ROW_TYPE } from '../types';
 import * as dragSpec from './dragSpec';
 import * as dropSpec from './dropSpec';
-import * as propTypes from './propTypes';
-
-import PureComponent from '../PureComponent';
+// import * as propTypes from './propTypes';
 
 class SortableItem extends PureComponent {
-  static propTypes = propTypes;
+  // static propTypes = propTypes;
 
   componentDidMount() {
     this.props.connectDragPreview(getEmptyImage(), {

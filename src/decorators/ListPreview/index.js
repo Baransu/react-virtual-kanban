@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
-import * as propTypes from './propTypes';
-
-import PureComponent from '../../PureComponent';
+// import * as propTypes from './propTypes';
 
 export default class ListPreview extends PureComponent {
   static propTypes = propTypes;
