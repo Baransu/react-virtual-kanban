@@ -9,7 +9,7 @@ import {
   findListIndex,
   findItemIndex,
   findItemListIndex,
-  findItemListId,
+  findItemListId
 } from './updateLists';
 
 import * as propTypes from './propTypes';
@@ -28,9 +28,9 @@ import PureComponent from '../PureComponent';
  *
  * More info: https://github.com/gaearon/react-dnd/issues/186
  */
-const getDndContext = ((dragDropManager = new DragDropManager(HTML5Backend)) => (context) => (
-  context.dragDropManager || dragDropManager
-))();
+const getDndContext = ((
+  dragDropManager = new DragDropManager(HTML5Backend)
+) => context => context.dragDropManager || dragDropManager)();
 
 class Kanban extends PureComponent {
   static propTypes = propTypes;
@@ -51,16 +51,16 @@ class Kanban extends PureComponent {
     onDragEndRow: () => {},
     overscanListCount: 2,
     overscanRowCount: 2,
-    itemCacheKey: ({ id }) => `${id}`,
-  }
+    itemCacheKey: ({ id }) => `${id}`
+  };
 
   static childContextTypes = {
-    dragDropManager: React.PropTypes.object,
-  }
+    dragDropManager: React.PropTypes.object
+  };
 
   static contextTypes = {
-    dragDropManager: React.PropTypes.object,
-  }
+    dragDropManager: React.PropTypes.object
+  };
 
   constructor(props) {
     super(props);
@@ -87,12 +87,12 @@ class Kanban extends PureComponent {
 
   getChildContext() {
     return {
-      dragDropManager: getDndContext(this.context),
+      dragDropManager: getDndContext(this.context)
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.scheduleUpdate(() => ({lists: nextProps.lists}));
+    this.scheduleUpdate(() => ({ lists: nextProps.lists }));
   }
 
   componentWillUnmount() {
@@ -121,14 +121,14 @@ class Kanban extends PureComponent {
 
   onMoveList(from, to) {
     this.scheduleUpdate(
-      (prevState) => ({lists: updateLists(prevState.lists, {from, to})}),
+      prevState => ({ lists: updateLists(prevState.lists, { from, to }) }),
       () => {
         const lists = this.state.lists;
 
         this.props.onMoveList({
           listId: from.listId,
           listIndex: findListIndex(lists, from.listId),
-          lists,
+          lists
         });
       }
     );
@@ -136,16 +136,16 @@ class Kanban extends PureComponent {
 
   onMoveRow(from, to) {
     this.scheduleUpdate(
-      (prevState) => ({lists: updateLists(prevState.lists, {from, to})}),
+      prevState => ({ lists: updateLists(prevState.lists, { from, to }) }),
       () => {
-          const lists = this.state.lists;
+        const lists = this.state.lists;
 
-          this.props.onMoveRow({
-            itemId: from.itemId,
-            listId: findItemListId(lists, from.itemId),
-            itemIndex: findItemIndex(lists, from.itemId),
-            listIndex: findItemListIndex(lists, from.itemId),
-            lists: lists,
+        this.props.onMoveRow({
+          itemId: from.itemId,
+          listId: findItemListId(lists, from.itemId),
+          itemIndex: findItemIndex(lists, from.itemId),
+          listIndex: findItemListIndex(lists, from.itemId),
+          lists: lists
         });
       }
     );
@@ -167,8 +167,8 @@ class Kanban extends PureComponent {
       listId: findItemListId(lists, itemId),
       rowIndex: findItemIndex(lists, itemId),
       listIndex: findItemListIndex(lists, itemId),
-      lists,
-    }
+      lists
+    };
   }
 
   listEndData({ listId }) {
@@ -177,7 +177,7 @@ class Kanban extends PureComponent {
     return {
       listId,
       listIndex: findListIndex(lists, listId),
-      lists,
+      lists
     };
   }
 
@@ -247,17 +247,17 @@ class Kanban extends PureComponent {
       listPreviewComponent,
       overscanListCount,
       scrollToList,
-      scrollToAlignment,
+      scrollToAlignment
     } = this.props;
 
     return (
       <div>
         <GridWithScrollZone
           lists={lists}
-          className='KanbanGrid'
+          className="KanbanGrid"
           // Needed for fixing disappearing items when scrolling
-          containerStyle={{pointerEvents: 'auto'}}
-          ref={(c) => (this._grid = c)}
+          containerStyle={{ pointerEvents: 'auto' }}
+          ref={c => (this._grid = c)}
           width={width}
           height={height}
           columnWidth={listWidth}

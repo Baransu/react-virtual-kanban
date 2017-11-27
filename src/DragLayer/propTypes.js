@@ -5,7 +5,7 @@ export const item = PropTypes.object;
 export const itemType = PropTypes.string;
 export const currentOffset = PropTypes.shape({
   x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequire,
+  y: PropTypes.number.isRequire
 });
 export const isDragging = PropTypes.bool.isRequired;
 export const itemPreviewComponent = PropTypes.func.isRequired;

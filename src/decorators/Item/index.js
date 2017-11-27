@@ -9,21 +9,29 @@ export default class Item extends PureComponent {
   static propTypes = propTypes;
 
   render() {
-    const { row, rowStyle, connectDragSource, connectDropTarget, isDragging } = this.props;
+    const {
+      row,
+      rowStyle,
+      connectDragSource,
+      connectDropTarget,
+      isDragging
+    } = this.props;
 
     const itemContainerClass = classnames({
-      'ItemContainer': true,
-      'ItemPlaceholder': isDragging,
+      ItemContainer: true,
+      ItemPlaceholder: isDragging
     });
 
-    return connectDragSource(connectDropTarget(
-      <div className='ItemWrapper' style={rowStyle}>
-        <div className={itemContainerClass}>
-          <div className='ItemContent'>
-            <p>{row.name}</p>
+    return connectDragSource(
+      connectDropTarget(
+        <div className="ItemWrapper" style={rowStyle}>
+          <div className={itemContainerClass}>
+            <div className="ItemContent">
+              <p>{row.name}</p>
+            </div>
           </div>
         </div>
-      </div>
-    ));
+      )
+    );
   }
 }

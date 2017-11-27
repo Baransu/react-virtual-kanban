@@ -74,10 +74,7 @@ function moveLists(lists, { fromId, toId }) {
   }
 
   return update(lists, {
-    $splice: [
-      [fromIndex, 1],
-      [toIndex, 0, fromList],
-    ]
+    $splice: [[fromIndex, 1], [toIndex, 0, fromList]]
   });
 }
 
@@ -105,7 +102,10 @@ function moveItems(lists, { fromId, toId }) {
       [fromListIndex]: {
         rows: {
           $splice: [
-            buildUpdateOperation(fromList.rows, {from: fromIndex, to: toIndex})
+            buildUpdateOperation(fromList.rows, {
+              from: fromIndex,
+              to: toIndex
+            })
           ]
         }
       }
@@ -118,19 +118,15 @@ function moveItems(lists, { fromId, toId }) {
     // Remove item from source list
     [fromListIndex]: {
       rows: {
-        $splice: [
-          [fromIndex, 1],
-        ]
+        $splice: [[fromIndex, 1]]
       }
     },
     // Add item to target list
     [toListIndex]: {
       rows: {
-        $splice: [
-          [toIndex, 0, fromItem]
-        ]
+        $splice: [[toIndex, 0, fromItem]]
       }
-    },
+    }
   });
 }
 
@@ -163,19 +159,15 @@ function moveItemToList(lists, { fromId, toId }) {
     // Remove item from source list
     [fromListIndex]: {
       rows: {
-        $splice: [
-          [fromIndex, 1],
-        ]
+        $splice: [[fromIndex, 1]]
       }
     },
     // Add item to target list
     [toListIndex]: {
       rows: {
-        $push: [
-          fromItem
-        ]
+        $push: [fromItem]
       }
-    },
+    }
   });
 }
 
@@ -185,7 +177,9 @@ export function updateLists(lists, { from, to }) {
 
   // Deprecation checks
   if (from.listIndex || from.rowIndex || to.listIndex || to.rowIndex) {
-    console.warn(`Deprecated listIndex and rowIndex param. Use listId or itemId`);
+    console.warn(
+      `Deprecated listIndex and rowIndex param. Use listId or itemId`
+    );
     return lists;
   }
 
@@ -200,7 +194,12 @@ export function updateLists(lists, { from, to }) {
   }
 
   // Move item to a different list
-  if (fromListId === void 0 && toListId !== void 0 && fromItemId !== void 0 && toItemId === void 0) {
+  if (
+    fromListId === void 0 &&
+    toListId !== void 0 &&
+    fromItemId !== void 0 &&
+    toItemId === void 0
+  ) {
     return moveItemToList(lists, { fromId: fromItemId, toId: toListId });
   }
 

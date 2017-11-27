@@ -27,7 +27,7 @@ class SortableItem extends PureComponent {
       isDragging,
       connectDragSource,
       connectDropTarget,
-      rowStyle,
+      rowStyle
     } = this.props;
 
     return (
@@ -46,13 +46,12 @@ class SortableItem extends PureComponent {
 
 const connectDrop = DropTarget(ROW_TYPE, dropSpec, connect => ({
   connectDropTarget: connect.dropTarget()
-}))
-
+}));
 
 const connectDrag = DragSource(ROW_TYPE, dragSpec, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   connectDragPreview: connect.dragPreview(),
-  isDragging: monitor.isDragging(),
-}))
+  isDragging: monitor.isDragging()
+}));
 
 export default connectDrop(connectDrag(SortableItem));

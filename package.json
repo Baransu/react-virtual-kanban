@@ -13,16 +13,8 @@
   "bugs": {
     "url": "https://github.com/edulan/react-virtual-kanban/issues"
   },
-  "keywords": [
-    "react",
-    "react-component",
-    "kanban",
-    "virtual-scroll"
-  ],
-  "files": [
-    "dist",
-    "lib"
-  ],
+  "keywords": ["react", "react-component", "kanban", "virtual-scroll"],
+  "files": ["dist", "lib"],
   "devDependencies": {
     "autoprefixer": "6.4.0",
     "babel-cli": "^6.18.0",
@@ -100,31 +92,31 @@
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
-    "react-addons-shallow-compare": "^0.14.0 || ^15.0.0",
     "react-dom": "^0.14.0 || ^15.0.0"
   },
   "scripts": {
     "build:clean": "rm -rf ./lib ./dist",
-    "build:lib": "NODE_ENV=production BABEL_ENV=commonjs babel src --out-dir lib --ignore src/demo/ --ignore src/**/__tests__",
-    "build:umd": "NODE_ENV=production webpack --config config/webpack.config.umd.js --bail",
+    "build:lib":
+      "NODE_ENV=production BABEL_ENV=commonjs babel src --out-dir lib --ignore src/demo/ --ignore src/**/__tests__",
+    "build:umd":
+      "NODE_ENV=production webpack --config config/webpack.config.umd.js --bail",
     "build:demo": "node ./scripts/build.js",
-    "build:css": "postcss --use autoprefixer --use postcss-import src/styles.css > lib/styles.css",
-    "build": "npm run build:clean && npm run build:umd && npm run build:lib && npm run build:css && npm run build:demo",
+    "build:css":
+      "postcss --use autoprefixer --use postcss-import src/styles.css > lib/styles.css",
+    "build":
+      "npm run build:clean && npm run build:umd && npm run build:lib && npm run build:css && npm run build:demo",
     "deploy": "gh-pages -d build",
     "prepublish": "npm run build",
     "postpublish": "npm run deploy",
-    "start": "npm run build:lib && npm run build:css && node ./scripts/start.js",
+    "start":
+      "npm run build:lib && npm run build:css && node ./scripts/start.js",
     "test": "jest"
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ],
-    "testPathIgnorePatterns": [
-      "(lib|build|docs|node_modules)[/\\\\]"
-    ]
+    "collectCoverageFrom": ["src/**/*.js"],
+    "testPathIgnorePatterns": ["(lib|build|docs|node_modules)[/\\\\]"]
   }
 }

@@ -7,7 +7,7 @@ export const PropTypes = {
     React.PropTypes.symbol
   ]),
 
-  decorator: React.PropTypes.func,
+  decorator: React.PropTypes.func
 };
 
 /**

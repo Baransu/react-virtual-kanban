@@ -12,10 +12,10 @@ export default class ListPreview extends PureComponent {
     const { width, height } = listStyle;
 
     return (
-      <div className='ListWrapper ListPreviewWrapper' style={{width, height}}>
-        <div className='ListContainer' style={{opacity: isGhost ? 0.5 : 1}}>
-          <div className='ListHeader'>
-            <span className='ListTitle'>List {listId}</span>
+      <div className="ListWrapper ListPreviewWrapper" style={{ width, height }}>
+        <div className="ListContainer" style={{ opacity: isGhost ? 0.5 : 1 }}>
+          <div className="ListHeader">
+            <span className="ListTitle">List {listId}</span>
           </div>
         </div>
       </div>

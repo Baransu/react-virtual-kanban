@@ -15,7 +15,7 @@ function calculateContainerWidth(component) {
 }
 
 export function hover(props, monitor, component) {
-  if (!monitor.isOver({shallow: true})) return;
+  if (!monitor.isOver({ shallow: true })) return;
   if (!monitor.canDrop()) return;
 
   const item = monitor.getItem();
@@ -28,19 +28,17 @@ export function hover(props, monitor, component) {
   }
 
   if (itemType === LIST_TYPE) {
-    props.moveList({listId: dragListId}, {listId: hoverListId});
+    props.moveList({ listId: dragListId }, { listId: hoverListId });
     return;
   }
 
   if (itemType === ROW_TYPE) {
     const dragItemId = item.rowId;
 
-    item.containerWidth = calculateContainerWidth(component) || item.containerWidth;
+    item.containerWidth =
+      calculateContainerWidth(component) || item.containerWidth;
 
-    props.moveRow(
-      {itemId: dragItemId},
-      {listId: hoverListId}
-    );
+    props.moveRow({ itemId: dragItemId }, { listId: hoverListId });
     return;
   }
 }
@@ -59,9 +57,9 @@ export function canDrop(props, monitor) {
 }
 
 export function drop(props, monitor) {
-  if (!monitor.isOver({shallow: true})) return;
+  if (!monitor.isOver({ shallow: true })) return;
 
   const { listId } = props;
 
-  props.dropList({listId});
+  props.dropList({ listId });
 }

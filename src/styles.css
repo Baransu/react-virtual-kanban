@@ -42,7 +42,7 @@
 }
 
 .ListPlaceholder {
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .ListPlaceholder .ListHeader,
@@ -120,7 +120,7 @@
 }
 
 .ItemPlaceholder {
-  background-color: #C4C9CC;
+  background-color: #c4c9cc;
 }
 
 .ItemPlaceholder .ItemContent {

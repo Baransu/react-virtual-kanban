@@ -10,7 +10,7 @@ export function beginDrag(props, _, component) {
     row: props.row,
     rowId: props.rowId,
     rowStyle: props.rowStyle,
-    containerWidth,
+    containerWidth
   };
 
   props.dragBeginRow(data);
@@ -21,7 +21,7 @@ export function beginDrag(props, _, component) {
 export function endDrag(props, monitor) {
   const { rowId: itemId } = props;
 
-  props.dragEndRow({itemId});
+  props.dragEndRow({ itemId });
 }
 
 /**
@@ -30,7 +30,7 @@ export function endDrag(props, monitor) {
  * This is the logic used to display the gaps (gray items) in the list.
  */
 export function isDragging({ rowId }, monitor) {
-   const draggingRowId = monitor.getItem().rowId;
+  const draggingRowId = monitor.getItem().rowId;
 
-   return rowId === draggingRowId;
+  return rowId === draggingRowId;
 }

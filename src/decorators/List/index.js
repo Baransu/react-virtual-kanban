@@ -16,30 +16,28 @@ export default class List extends PureComponent {
       connectDragSource,
       connectDropTarget,
       isDragging,
-      children,
+      children
     } = this.props;
 
     let listContainerClass = classnames({
-      'ListContainer': true,
-      'ListPlaceholder': isDragging
+      ListContainer: true,
+      ListPlaceholder: isDragging
     });
 
     return (
-      <div className='ListWrapper' style={listStyle}>
+      <div className="ListWrapper" style={listStyle}>
         <div className={listContainerClass}>
           {connectDragSource(
-            <div className='ListHeader'>
-              <span className='ListTitle'>List {listId} ({list.rows.length})</span>
+            <div className="ListHeader">
+              <span className="ListTitle">
+                List {listId} ({list.rows.length})
+              </span>
             </div>
           )}
-          {connectDropTarget(
-            <div className='ListContent'>
-              {children}
-            </div>
-          )}
-          <div className='ListFooter'>
-            <div className='ListActions'>
-              <button className='ListActionItem'>Add a task...</button>
+          {connectDropTarget(<div className="ListContent">{children}</div>)}
+          <div className="ListFooter">
+            <div className="ListActions">
+              <button className="ListActionItem">Add a task...</button>
             </div>
           </div>
         </div>

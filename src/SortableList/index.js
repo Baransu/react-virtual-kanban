@@ -1,5 +1,9 @@
-import React from 'react';
-import { List as VirtualScroll, CellMeasurer, AutoSizer } from 'react-virtualized';
+import React, { PureComponent } from 'react';
+import {
+  List as VirtualScroll,
+  CellMeasurer,
+  AutoSizer
+} from 'react-virtualized';
 import { DragSource, DropTarget } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 
@@ -13,7 +17,7 @@ import * as propTypes from './propTypes';
 
 import PureComponent from '../PureComponent';
 
-const identity = (c) => c;
+const identity = c => c;
 
 class SortableList extends PureComponent {
   static propTypes = propTypes;
@@ -84,20 +88,22 @@ class SortableList extends PureComponent {
         columnCount={1}
         rowCount={this.props.list.rows.length}
         cellRenderer={this.renderItemForMeasure}
-        cellSizeCache={new ItemCache(this.props.list.rows, this.props.itemCacheKey)}
+        cellSizeCache={
+          new ItemCache(this.props.list.rows, this.props.itemCacheKey)
+        }
       >
         {({ getRowHeight }) => (
           <VirtualScroll
-            ref={(c) => (this._list = c)}
-            className='KanbanList'
+            ref={c => (this._list = c)}
+            className="KanbanList"
             width={width}
             height={height}
             rowHeight={getRowHeight}
             rowCount={this.props.list.rows.length}
             rowRenderer={this.renderRow}
             overscanRowCount={this.props.overscanRowCount}
-           />
-         )}
+          />
+        )}
       </CellMeasurer>
     );
   }
@@ -110,7 +116,7 @@ class SortableList extends PureComponent {
       isDragging,
       connectDragSource,
       connectDropTarget,
-      listStyle,
+      listStyle
     } = this.props;
 
     return (
@@ -123,22 +129,20 @@ class SortableList extends PureComponent {
         connectDragSource={connectDragSource}
         connectDropTarget={connectDropTarget}
       >
-        <AutoSizer>
-          {(dimensions) => this.renderList(dimensions)}
-        </AutoSizer>
+        <AutoSizer>{dimensions => this.renderList(dimensions)}</AutoSizer>
       </DecoratedList>
     );
   }
 }
 
 const connectDrop = DropTarget([LIST_TYPE, ROW_TYPE], dropSpec, connect => ({
-  connectDropTarget: connect.dropTarget(),
-}))
+  connectDropTarget: connect.dropTarget()
+}));
 
 const connectDrag = DragSource(LIST_TYPE, dragSpec, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   connectDragPreview: connect.dragPreview(),
-  isDragging: monitor.isDragging(),
-}))
+  isDragging: monitor.isDragging()
+}));
 
 export default connectDrop(connectDrag(SortableList));

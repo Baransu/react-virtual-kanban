@@ -20,7 +20,7 @@ function getStyles({ currentOffset }) {
   const transform = `translate(${x}px, ${y}px)`;
 
   return {
-    transform,
+    transform
   };
 }
 
@@ -37,31 +37,31 @@ class KanbanDragLayer extends PureComponent {
     const {
       lists,
       itemPreviewComponent: ItemPreview,
-      listPreviewComponent: ListPreview,
+      listPreviewComponent: ListPreview
     } = this.props;
 
     switch (type) {
-    case ItemTypes.ROW_TYPE:
-      return (
-        <ItemPreview
-          row={item.row}
-          rowId={item.rowId}
-          rowStyle={item.rowStyle}
-          containerWidth={item.containerWidth}
-          isGhost={findItemIndex(lists, item.rowId) === -1}
-        />
-      );
-    case ItemTypes.LIST_TYPE:
-      return (
-        <ListPreview
-          list={item.list}
-          listId={item.listId}
-          listStyle={item.listStyle}
-          isGhost={findListIndex(lists, item.listId) === -1}
-        />
-      );
-    default:
-      return null;
+      case ItemTypes.ROW_TYPE:
+        return (
+          <ItemPreview
+            row={item.row}
+            rowId={item.rowId}
+            rowStyle={item.rowStyle}
+            containerWidth={item.containerWidth}
+            isGhost={findItemIndex(lists, item.rowId) === -1}
+          />
+        );
+      case ItemTypes.LIST_TYPE:
+        return (
+          <ListPreview
+            list={item.list}
+            listId={item.listId}
+            listStyle={item.listStyle}
+            isGhost={findListIndex(lists, item.listId) === -1}
+          />
+        );
+      default:
+        return null;
     }
   }
 
@@ -73,7 +73,7 @@ class KanbanDragLayer extends PureComponent {
     }
 
     return (
-      <div className='KanbanDragLayer'>
+      <div className="KanbanDragLayer">
         <div style={getStyles(this.props)}>
           {this.renderItem(itemType, item)}
         </div>

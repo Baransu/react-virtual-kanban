@@ -27,7 +27,7 @@ export function hover(props, monitor, component) {
   const node = findDOMNode(component);
   const hoverBoundingRect = node.getBoundingClientRect();
 
-    // Get vertical middle
+  // Get vertical middle
   const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
 
   // Determine mouse position
@@ -48,10 +48,7 @@ export function hover(props, monitor, component) {
 
   item.containerWidth = width(node);
 
-  props.moveRow(
-    {itemId: dragItemId},
-    {itemId: hoverItemId}
-  );
+  props.moveRow({ itemId: dragItemId }, { itemId: hoverItemId });
 }
 
 export function canDrop(props, monitor) {
@@ -63,5 +60,5 @@ export function canDrop(props, monitor) {
 export function drop(props) {
   const { rowId: itemId } = props;
 
-  props.dropRow({itemId});
+  props.dropRow({ itemId });
 }

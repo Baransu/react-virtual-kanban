@@ -1,9 +1,9 @@
 function generateRandom(count) {
-  return Array.from({length: count}, (_, i) => {
+  return Array.from({ length: count }, (_, i) => {
     return {
       id: i,
       name: `${i}`,
-      lastModified: Date.now(),
+      lastModified: Date.now()
     };
   });
 }
@@ -18,7 +18,7 @@ export function generateLists(count, rowsPerList) {
     let group = memo[i % count];
 
     if (!group) {
-      group = memo[i % count] = {id: i, rows: []};
+      group = memo[i % count] = { id: i, rows: [] };
     }
 
     group.rows.push(row);

@@ -11,30 +11,28 @@ export default class List extends decorators.List {
       connectDragSource,
       connectDropTarget,
       isDragging,
-      children,
+      children
     } = this.props;
 
     let listContainerClass = classnames({
-      'ListContainer': true,
-      'ListPlaceholder': isDragging
+      ListContainer: true,
+      ListPlaceholder: isDragging
     });
 
     return (
-      <div className='ListWrapper' style={style}>
+      <div className="ListWrapper" style={style}>
         <div className={listContainerClass}>
           {connectDragSource(
-            <div className='ListHeader'>
-              <span className='ListTitle'>List {listId}</span>
+            <div className="ListHeader">
+              <span className="ListTitle">List {listId}</span>
             </div>
           )}
-          {connectDropTarget(
-            <div className='ListContent'>
-              {children}
-            </div>
-          )}
-          <div className='ListFooter'>
-            <div className='ListActions'>
-              <button className='ListActionItem' onClick={this.props.onAddTask}>Add a task...</button>
+          {connectDropTarget(<div className="ListContent">{children}</div>)}
+          <div className="ListFooter">
+            <div className="ListActions">
+              <button className="ListActionItem" onClick={this.props.onAddTask}>
+                Add a task...
+              </button>
             </div>
           </div>
         </div>

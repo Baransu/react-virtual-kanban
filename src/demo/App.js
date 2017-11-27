@@ -12,16 +12,18 @@ class App extends Component {
     super(props);
 
     this.state = {
-      lists: props.getLists(),
+      lists: props.getLists()
     };
 
     setInterval(() => {
-      this.setState((prevState) => {
+      this.setState(prevState => {
         if (prevState.lists[0].rows.length > 0) {
           this._initialLists = prevState.lists;
-          return {lists: prevState.lists.map((list) => ({...list, rows: []}))};
+          return {
+            lists: prevState.lists.map(list => ({ ...list, rows: [] }))
+          };
         } else {
-          return {lists: this._initialLists.concat()};
+          return { lists: this._initialLists.concat() };
         }
       });
     }, 3000);
@@ -29,7 +31,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className='KanbanWrapper'>
+      <div className="KanbanWrapper">
         <AutoSizer>
           {({ width, height }) => (
             <VirtualKanban
@@ -38,8 +40,8 @@ class App extends Component {
               height={height}
               listWidth={200}
               itemCacheKey={keyGenerator}
-              onMoveRow={({ lists }) => this.setState(() => ({lists}))}
-              onMoveList={({ lists }) => this.setState(() => ({lists}))}
+              onMoveRow={({ lists }) => this.setState(() => ({ lists }))}
+              onMoveList={({ lists }) => this.setState(() => ({ lists }))}
             />
           )}
         </AutoSizer>
